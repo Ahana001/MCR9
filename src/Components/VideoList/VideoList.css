@@ -6,3 +6,10 @@
   flex-wrap: wrap;
   gap: 2rem;
 }
+.VideoList input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.4rem;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}

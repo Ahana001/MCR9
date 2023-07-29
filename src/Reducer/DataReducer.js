@@ -9,12 +9,15 @@ export const ActionTypes = {
   CREATE_PLAYLIST: "CREATE_PLAYLIST",
   DELETE_PLAYLIST: "DELETE_PLAYLIST",
   ADD_TO_PLAYLIST: "ADD_TO_PLAYLIST",
+  REMOVE_FROM_PLAYLIST: "REMOVE_FROM_PLAYLIST",
+  SET_SEARCH_TEXT: "SET_SEARCH_TEXT",
 };
 
 export const initialState = {
   categories: [],
   videos: [],
   playlists: [],
+  search: "",
 };
 
 export function DataReducer(state, action) {
@@ -82,10 +85,23 @@ export function DataReducer(state, action) {
       const playlists = state.playlists.filter(
         (playlist) => playlist._id !== action.payload.playlistId
       );
+      const videos = state.videos.map((video) => {
+        if (video.playlistIds.includes(action.payload.playlistId)) {
+          return {
+            ...video,
+            playlistIds: video.playlistIds.filter(
+              (playlistId) => playlistId !== action.payload.playlistId
+            ),
+          };
+        }
+        return video;
+      });
       result = {
         ...state,
+        videos: videos,
         playlists: playlists,
       };
+      localStorage.setItem("videos", JSON.stringify(videos));
       localStorage.setItem("playlists", JSON.stringify(playlists));
       break;
     }
@@ -104,6 +120,32 @@ export function DataReducer(state, action) {
         videos: videos,
       };
       localStorage.setItem("videos", JSON.stringify(videos));
+      break;
+    }
+    case ActionTypes.REMOVE_FROM_PLAYLIST: {
+      const videos = state.videos.map((video) => {
+        if (video._id === Number(action.payload.videoId)) {
+          return {
+            ...video,
+            playlistIds: video.playlistIds.filter(
+              (playlistId) => playlistId !== action.payload.playlistId
+            ),
+          };
+        }
+        return video;
+      });
+      result = {
+        ...state,
+        videos: videos,
+      };
+      localStorage.setItem("videos", JSON.stringify(videos));
+      break;
+    }
+    case ActionTypes.SET_SEARCH_TEXT: {
+      result = {
+        ...state,
+        search: action.payload.search,
+      };
       break;
     }
   }

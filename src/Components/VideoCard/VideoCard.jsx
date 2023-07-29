@@ -4,7 +4,8 @@ import "./VideoCard.css";
 import { MdWatchLater, MdOutlineWatchLater } from "react-icons/md";
 import { DataContext } from "../../Context/DataContext";
 import { ActionTypes } from "../../Reducer/DataReducer";
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { RxCross1 } from "react-icons/rx";
 
 export function VideoCard({
   video: {
@@ -19,14 +20,35 @@ export function VideoCard({
     isWatchLater,
   },
 }) {
+  const navigator = useNavigate();
+  const location = useLocation();
+  const { playlistId } = useParams();
   const { dispatch } = useContext(DataContext);
   return (
-    <Link className="VideoCardContainer" to={`/video/${_id}`}>
+    <div
+      className="VideoCardContainer"
+      onClick={() => {
+        navigator(`/video/${_id}`);
+      }}
+    >
+      {location.pathname.includes("/playlist/") ? (
+        <RxCross1
+          className="VideoRemoveButton"
+          onClick={(e) => {
+            e.stopPropagation();
+            dispatch({
+              type: ActionTypes.REMOVE_FROM_PLAYLIST,
+              payload: { playlistId: playlistId, videoId: _id },
+            });
+          }}
+        />
+      ) : null}
       <div className="ImageContainer">
         <img src={thumbnail} alt={title} />
         <div
           className="WatchContainer"
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             dispatch({
               type: ActionTypes.SET_VIDEO_WATCHED,
               payload: { videoId: _id },
@@ -46,6 +68,6 @@ export function VideoCard({
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

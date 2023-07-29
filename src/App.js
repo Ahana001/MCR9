@@ -7,6 +7,7 @@ import { CategoryWiseVideosPage } from "./Pages/CategoryWiseVideosPage/CategoryW
 import { PlayListPage } from "./Pages/PlayListPage/PlayListPage";
 import { SingleVideoPage } from "./Pages/SingleVideoPage/SingleVideoPage";
 import { PlayListWiseVideoListPage } from "./Pages/PlayListWiseVideoListPage/PlayListWiseVideoListPage";
+import { ExplorePage } from "./Pages/ExplorePage/ExplorePage";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           path="/videos/:categoryName"
           element={<CategoryWiseVideosPage />}
         ></Route>
-        <Route path="/explore" element={<HomePage />}></Route>
+        <Route path="/explore" element={<ExplorePage />}></Route>
         <Route path="/playlists" element={<PlayListPage />}></Route>
         <Route
           path="/playlist/:playlistId"
