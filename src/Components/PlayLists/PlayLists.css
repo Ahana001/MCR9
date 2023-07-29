@@ -1,0 +1,15 @@
+.PlayLists h2 {
+  font-size: 2rem;
+}
+.PlayListsConatiner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.CreatePlayListButtonConatiner {
+  font-size: 3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

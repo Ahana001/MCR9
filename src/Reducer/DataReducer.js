@@ -1,18 +1,109 @@
+import { v4 as uuid } from "uuid";
+
 export const ActionTypes = {
-  INITIAL_SET_SNACKS: "INITIAL_SET_SNACKS",
+  INITIAL_SET_CATEGORIES: "INITIAL_SET_CATEGORIES",
+  INITIAL_SET_VIDEOS: "INITIAL_SET_VIDEOS",
+  INITIAL_SET_PLAYLISTS: "INITIAL_SET_PLAYLISTS",
+  INITIAL_LOCAL_STORAGE_FETCH: "INITIAL_LOCAL_STORAGE_FETCH",
+  SET_VIDEO_WATCHED: "SET_VIDEO_WATCHED",
+  CREATE_PLAYLIST: "CREATE_PLAYLIST",
+  DELETE_PLAYLIST: "DELETE_PLAYLIST",
+  ADD_TO_PLAYLIST: "ADD_TO_PLAYLIST",
 };
 
-export const initialState = {};
+export const initialState = {
+  categories: [],
+  videos: [],
+  playlists: [],
+};
 
 export function DataReducer(state, action) {
   let result;
   // eslint-disable-next-line default-case
   switch (action.type) {
-    case ActionTypes.INITIAL_SET_SNACKS: {
+    case ActionTypes.INITIAL_SET_CATEGORIES: {
       result = {
         ...state,
-        snacks: action.payload.snacks,
+        categories: action.payload.categories,
       };
+
+      break;
+    }
+    case ActionTypes.INITIAL_SET_VIDEOS: {
+      result = {
+        ...state,
+        videos: action.payload.videos,
+      };
+      break;
+    }
+    case ActionTypes.INITIAL_SET_PLAYLISTS: {
+      result = {
+        ...state,
+        playlists: action.payload.playlists,
+      };
+      break;
+    }
+    case ActionTypes.SET_VIDEO_WATCHED: {
+      const videos = state.videos.map((video) => {
+        if (video._id === action.payload?.videoId) {
+          return {
+            ...video,
+            isWatchLater: !video.isWatchLater,
+          };
+        } else {
+          return video;
+        }
+      });
+      result = {
+        ...state,
+        videos: videos,
+      };
+      localStorage.setItem("videos", JSON.stringify(videos));
+      break;
+    }
+    case ActionTypes.CREATE_PLAYLIST: {
+      const playlists = [
+        ...state.playlists,
+        {
+          ...action.payload.playlist,
+          _id: uuid(),
+          thumbnail: "https://picsum.photos/300/176",
+          createdAt: new Date(),
+        },
+      ];
+      result = {
+        ...state,
+        playlists: playlists,
+      };
+      localStorage.setItem("playlists", JSON.stringify(playlists));
+      break;
+    }
+    case ActionTypes.DELETE_PLAYLIST: {
+      const playlists = state.playlists.filter(
+        (playlist) => playlist._id !== action.payload.playlistId
+      );
+      result = {
+        ...state,
+        playlists: playlists,
+      };
+      localStorage.setItem("playlists", JSON.stringify(playlists));
+      break;
+    }
+    case ActionTypes.ADD_TO_PLAYLIST: {
+      const videos = state.videos.map((video) => {
+        if (video._id === Number(action.payload.videoId)) {
+          return {
+            ...video,
+            playlistIds: [...video.playlistIds, action.payload.playlistId],
+          };
+        }
+        return video;
+      });
+      result = {
+        ...state,
+        videos: videos,
+      };
+      localStorage.setItem("videos", JSON.stringify(videos));
       break;
     }
   }

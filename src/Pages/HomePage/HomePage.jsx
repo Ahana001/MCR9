@@ -1,10 +1,12 @@
 import "./HomePage.css";
 
-// import { useContext } from "react";
-// import { DataContext } from "../../Context/DataContext";
+import { UIStructure } from "../../Components/UIStructure/UIStructure";
+import { CategoryList } from "../../Components/CategoryList/CategoryList";
 
 export function HomePage() {
-  // const { state } = useContext(DataContext);
-
-  return <h2>Home</h2>;
+  return (
+    <UIStructure>
+      <CategoryList />
+    </UIStructure>
+  );
 }

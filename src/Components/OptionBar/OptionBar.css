@@ -1,0 +1,40 @@
+.MenuBarList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 1.6rem;
+  list-style: none;
+  margin-block-start: 0rem;
+  margin-block-end: 0rem;
+  padding-inline-start: 0rem;
+  margin-top: 4rem;
+  margin-left: 0.8rem;
+  padding: 1rem;
+}
+.MenuBarList li {
+  border-radius: 1rem;
+}
+.MenuBarList .MenuBarListItem {
+  cursor: pointer;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  gap: 1rem;
+  text-decoration: none;
+  color: black;
+  text-transform: capitalize;
+  border-radius: 1rem;
+}
+.MenuBarIcon {
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (hover: hover) {
+  .MenuBarList li:hover {
+    background-color: var(--hover-color);
+  }
+}

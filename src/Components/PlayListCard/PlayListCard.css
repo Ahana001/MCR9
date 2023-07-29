@@ -1,0 +1,23 @@
+.PlayListCardContainer {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.PlayListCardContainer img {
+  width: 28rem;
+  height: 14rem;
+}
+.PlayListCardContainer div {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  text-decoration: none;
+  color: black;
+}
+.VideoRemoveButton {
+  font-size: 2rem;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 0.5rem;
+}

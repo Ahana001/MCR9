@@ -1,0 +1,47 @@
+.VideoCardContainer {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  width: 20rem;
+  user-select: none;
+  color: black;
+  text-decoration: none;
+}
+.ImageContainer {
+  position: relative;
+}
+.WatchContainer {
+  position: absolute;
+  right: 0rem;
+  top: 0rem;
+  font-size: 2rem;
+  background-color: white;
+  border-bottom-left-radius: 0.36rem;
+  padding: 0.4rem;
+  color: var(--main-color);
+}
+.ImageContainer img {
+  width: 20rem;
+  height: 12rem;
+}
+.VideoDescription {
+  display: flex;
+  gap: 0.5rem;
+  user-select: none;
+  margin-top: 1rem;
+}
+.VideoDescription img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+}
+.VideoDesriptionWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.Title,
+.Category {
+  font-weight: 500;
+  font-size: 1.2rem;
+}

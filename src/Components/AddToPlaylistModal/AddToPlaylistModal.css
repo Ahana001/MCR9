@@ -1,0 +1,48 @@
+.AddToPlaylistModal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: absolute;
+  top: 2.8rem;
+  right: 2rem;
+  background-color: white;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 0.36rem;
+  height: 25rem;
+}
+.PlaylistScroll {
+  overflow-y: scroll;
+}
+.PlaylistScroll ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-inline-start: 0rem;
+  list-style: none;
+}
+.PlaylistScroll ul li {
+  cursor: pointer;
+  padding: 1rem 0rem;
+}
+.AddToPlaylistModal input {
+  padding: 1rem;
+  border-radius: 0.36rem;
+}
+.AddToPlaylistModal button {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border-radius: 0.36rem;
+  background-color: var(--main-color);
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+.AddToPlaylistModal button:disabled {
+  background-color: grey;
+}
+@media (hover: hover) {
+  .PlaylistScroll ul li:hover {
+    background-color: var(--hover-color);
+  }
+}

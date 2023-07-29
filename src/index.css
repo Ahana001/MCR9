@@ -1,3 +1,8 @@
+:root {
+  --hover-color: #f4f4f4;
+  --main-color: #66add8;
+}
+
 * *::after,
 *::before {
   margin: 0;

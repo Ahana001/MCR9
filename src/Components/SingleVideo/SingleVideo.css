@@ -1,0 +1,34 @@
+.SingleVideoDesription,
+.LeftDesription,
+.RightDesription {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+.SingleVideoDesription {
+  justify-content: space-between;
+  width: 64rem;
+  margin-top: 1rem;
+  font-size: 1.4rem;
+}
+.LeftDesription,
+.RightDesription {
+  gap: 1rem;
+}
+.LeftDesription {
+  font-weight: 600;
+}
+.RightDesription {
+  font-size: 2rem;
+}
+.VideoIcon {
+  cursor: pointer;
+}
+.LeftDesription img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+}
+.AddToPlaylistIcon {
+  position: relative;
+}
