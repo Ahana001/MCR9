@@ -32,3 +32,15 @@
 .AddToPlaylistIcon {
   position: relative;
 }
+.AddNoteIcon {
+  position: relative;
+}
+.NoteList {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+  margin-top: 3rem;
+}
+.AddNoteIcon .VideoIcon {
+  font-size: 3rem;
+}

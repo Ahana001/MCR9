@@ -148,6 +148,23 @@ export function DataReducer(state, action) {
       };
       break;
     }
+    case ActionTypes.ADD_NOTE: {
+      const videos = state.videos.map((video) => {
+        if (video._id === Number(action.payload.videoId)) {
+          return {
+            ...video,
+            notes: [...video.notes, action.payload.note.note],
+          };
+        }
+        return video;
+      });
+      result = {
+        ...state,
+        videos: videos,
+      };
+      localStorage.setItem("videos", JSON.stringify(videos));
+      break;
+    }
   }
   return result;
 }

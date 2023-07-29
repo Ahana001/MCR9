@@ -17,6 +17,7 @@ export function DataContextProvider({ children }) {
         ...video,
         isWatchLater: false,
         playlistIds: [],
+        notes: [],
       }));
       dispatch({
         type: ActionTypes.INITIAL_SET_VIDEOS,

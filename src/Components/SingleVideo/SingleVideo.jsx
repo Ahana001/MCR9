@@ -8,12 +8,20 @@ import { useContext } from "react";
 import { DataContext } from "../../Context/DataContext";
 import { AddToPlaylistModal } from "../AddToPlaylistModal/AddToPlaylistModal";
 import { DisplayContext } from "../../Context/DisplayContext";
+import { AddNote } from "../../Components/AddNote/AddNote";
 
 export function SingleVideo({ video }) {
   const { dispatch } = useContext(DataContext);
-  const { toggleAddToPlaylistModal, setToggleAddToPlaylistModal } =
-    useContext(DisplayContext);
+  const {
+    toggleAddToPlaylistModal,
+    setToggleAddToPlaylistModal,
+    toggleAddNoteModal,
+    setToggleAddNoteModal,
+  } = useContext(DisplayContext);
 
+  const sortedNotes = video?.notes?.sort((a, b) => {
+    return b.createdAt - a.createdAt;
+  });
   if (!video) {
     return <h2>Video Not Found</h2>;
   }
@@ -56,8 +64,22 @@ export function SingleVideo({ video }) {
             />
             <AddToPlaylistModal />
           </div>
-          <MdEditNote className="VideoIcon" />
+          <div className="AddNoteIcon">
+            <MdEditNote
+              className="VideoIcon"
+              onClick={() => {
+                setToggleAddNoteModal(!toggleAddNoteModal);
+              }}
+            />
+            <AddNote />
+          </div>
         </div>
+      </div>
+      <h1>My Notes</h1>
+      <div className="NoteList">
+        {sortedNotes.map((note) => {
+          return <div>{note}</div>;
+        })}
       </div>
     </div>
   );

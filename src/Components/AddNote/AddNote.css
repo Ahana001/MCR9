@@ -1,0 +1,29 @@
+.AddNote {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: absolute;
+  top: 2.8rem;
+  right: 2rem;
+  background-color: white;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 0.36rem;
+  height: 25rem;
+}
+.AddNote input {
+  padding: 1rem;
+  border-radius: 0.36rem;
+}
+.AddNote button {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border-radius: 0.36rem;
+  background-color: var(--main-color);
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+.AddNote button:disabled {
+  background-color: grey;
+}

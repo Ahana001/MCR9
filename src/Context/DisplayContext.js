@@ -9,6 +9,8 @@ export function DisplayContextProvider({ children }) {
   const [toggleAddToPlaylistModal, setToggleAddToPlaylistModal] =
     useState(false);
 
+  const [toggleAddNoteModal, setToggleAddNoteModal] = useState(false);
+
   return (
     <DisplayContext.Provider
       value={{
@@ -16,6 +18,8 @@ export function DisplayContextProvider({ children }) {
         setToggleCreatePlaylistModal,
         toggleAddToPlaylistModal,
         setToggleAddToPlaylistModal,
+        toggleAddNoteModal,
+        setToggleAddNoteModal,
       }}
     >
       {children}
