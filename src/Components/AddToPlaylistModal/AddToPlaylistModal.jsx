@@ -5,6 +5,7 @@ import { ActionTypes } from "../../Reducer/DataReducer";
 import { DataContext } from "../../Context/DataContext";
 import { DisplayContext } from "../../Context/DisplayContext";
 import { useParams } from "react-router-dom";
+import { RxCross1 } from "react-icons/rx";
 
 export function AddToPlaylistModal() {
   const { videoId } = useParams();
@@ -64,6 +65,16 @@ export function AddToPlaylistModal() {
                 }}
               >
                 {playlist.name}
+                <RxCross1
+                  className="VideoRemoveButton"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    dispatch({
+                      type: ActionTypes.DELETE_PLAYLIST,
+                      payload: { playlistId: playlist._id },
+                    });
+                  }}
+                />
               </li>
             );
           })}

@@ -23,7 +23,10 @@
 }
 .PlaylistScroll ul li {
   cursor: pointer;
-  padding: 1rem 0rem;
+  padding: 1rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .AddToPlaylistModal input {
   padding: 1rem;
